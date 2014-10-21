@@ -1,0 +1,86 @@
+<!--//HEADER-->
+<?php $this->render('back/header'); ?>
+
+<!--//MENU SDEBAR-->
+<div class="span2 menu-sidebar">
+    <?php $this->render('back/sidebar'); ?>
+</div>
+
+<!--//CONTENT -->
+<div class="span10">
+    <ul class="breadcrumb">
+        <li><a href="#">Painel</a> <span class="divider">/</span></li>
+        <li><a href="#">Usuários</a> <span class="divider">/</span></li>
+        <li class="active">Novo</li>
+    </ul>
+
+    <div class="msgs">
+        <?php \app\helpers\Message::get(); ?>
+    </div>
+
+        <div class="content">
+
+            <div class="navbar-inner header-admin">
+                <div class="nav-header">
+                    <div class="local">
+                        <h3>Cadastrar usuário</h3>
+                    </div>
+
+                    <div class="acoes">
+                        <div class="btn-group">
+                            <a href="javascript:history.back();" class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> Cancelar</a>
+                        </div>
+                    </div>
+                </div>
+            </div><!--///header-admin-->
+
+            <div class="form-cad">
+                <form class="form-horizontal" method="post">
+                    <div class="control-group">
+                        <label class="control-label">Nome</label>
+                        <div class="controls">
+                            <input type="text" value="<?php echo $data->nome; ?>" class="span5" name="nome" placeholder="Nome">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Email</label>
+                        <div class="controls">
+                            <input type="text" value="<?php echo $data->email; ?>" class="span5" name="email" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Nível de usuário</label>
+                        <div class="controls">
+                            <select name="nivel" class="span4">
+                                <?php if(!$data->nivel) echo '<option value=""></option>'; ?>
+                                <option value="1" <?php if($data->nivel==1) echo 'selected'; ?>>Administrador</option>
+                                <option value="2" <?php if($data->nivel==2) echo 'selected'; ?>>Gerenciador</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Senha</label>
+                        <div class="controls">
+                            <input type="password" id="password" class="span5" name="pass" placeholder="Senha">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Confirmar Senha</label>
+                        <div class="controls">
+                            <input type="password" id="password2" class="span5" name="pass2" placeholder="Confirmar senha">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                    </div>
+                </form>
+            </div><!--//form-cad-->
+
+        </div><!--//content-->
+</div>
+<!--//CONTENT-->
+
+<!--//FOOTER-->
+<?php $this->render('back/footer'); ?>

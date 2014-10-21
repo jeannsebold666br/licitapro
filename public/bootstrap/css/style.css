@@ -1,0 +1,195 @@
+/*fonte end*/
+.header .navbar-inner{
+    height: 225px;
+}
+.search{
+    max-width: 1000px;
+    padding:10px 1em 20px 1em;
+    margin: auto;
+}
+.search form .bloc{
+    width: 100%;
+    float: left;
+}
+.bloc p > span{
+    display: block;
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+}
+select#status{
+    width: 100px;
+}
+.bloc input[type=text]{
+    width: 187px;
+}
+.bloc p .btn{
+    margin-top: 20px;
+}
+.conteudo{
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 250px;
+}
+.conteudo .container-fluid{
+    padding-left: 0;
+}
+.content-results .results{
+    border: 1px dashed #999;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.results .nav{
+    background: #f4f4f4;
+    margin-bottom: 0;
+}
+.results .nav li a{
+    color: #000;
+    border-color: #f4f4f4;
+    border-bottom-color: #ddd;
+}
+.results .nav li.active a, .results .nav li.active a:hover{
+    border-color: #fff;
+}
+#resumo table{
+    margin-bottom: 0;
+}
+.results .tab-pane{
+    padding: 0.5em;
+}
+#resumo table td{
+    text-align: center;
+}
+.results .tab-pane h2{
+    font-size: 16px;
+    color: #000;
+    line-height: 1em;
+}
+.results .tab-pane table thead{
+    border: none;
+}
+.tab-pane table tr{
+    border: none;
+}
+.tab-pane table th{
+    font-weight: normal;
+    border: none;
+    padding: 5px;
+    border-right: 1px solid #f4f4f4;
+    text-align: center;
+}
+.results table th.obj{
+    text-align: left;
+}
+.results table td.obj{
+    text-align: left;
+    padding-right: 20px;
+    color: #000;
+    width: 290px;
+}
+.tab-pane table td{
+    font-size: 12px;
+    text-align: center;
+    color: #666;
+    border-right: 1px solid #f4f4f4;
+    padding:0 5px;
+    border-top: none;
+}
+.tab-pane table td i{
+    font-style: normal;
+}
+
+/*back end*/
+.page-header-login{
+}
+.page-content{
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+}
+.login{
+    max-width: 300px;
+    margin:50px auto;
+}
+.login form .input input{
+    height: 40px;
+}
+.login .remem{
+    margin: 10px 0;
+    display: block;
+}
+.content-admin{
+    margin-top: 100px;
+}
+.content{
+    border: 1px solid #ddd;
+}
+.content .navbar-inner{
+    box-shadow: none;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+    background: none;
+    padding: 0;
+    height:60px;
+}
+.local{
+    margin-right: 10px;
+}
+.local h3{
+    font-size: 16px;
+    color: #666;
+    line-height: 1em;
+    float: left;
+}
+
+.header-admin{
+    overflow: hidden;
+}
+.header-admin .nav-header > div{
+    float: left;
+    margin-top: 10px;
+}
+.header-admin .nav-header .form{
+    padding-left: 10px;
+    height: 30px;
+    border-left: 1px dashed #ddd;
+}
+.header-admin .pull-right{
+    float: right;
+}
+.acoes {
+    margin-top: 15px !important;
+    float: right !important;
+}
+table tr .first{
+    border-right: 1px solid #f4f4f4;
+    width: 20px;
+}
+table tr td a{
+    color: #3A87AD;
+}
+table tr td.btns-actions{
+    width: 70px;
+}
+.form-cad{
+    margin-top: 20px;
+}
+.form-cad form span.help-inline{
+    color: #BD362F;
+}
+.tab-pane > div{
+    max-width: 100%;
+    margin: 5px 10px;
+}
+.mce-panel{
+    border-color: #ddd !important;
+}
+footer{
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+}

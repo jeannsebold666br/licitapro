@@ -1,0 +1,81 @@
+<?php
+ob_start();
+session_start();
+\core\Restrict::verify();
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?php echo BASE ?>/bootstrap/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE ?>/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo BASE ?>/bootstrap/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="<?php echo BASE ?>/javascript/select2/select2.css">
+    <link rel="stylesheet" href="<?php echo BASE ?>/javascript/datetimepicker/jquery.datetimepicker.css">
+    <!--[if lt IE 9]>
+    <script src="<?php echo BASE ?>/javascript/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body class="badmin">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a href="<?php echo BASE; ?>/panel" class="brand">Painel de Gerenciamento</a>
+            <div class="btn-group pull-right">
+                <a href="<?php echo BASE?>" target="_blank" class="btn"><i class="icon-globe"></i> Site</a>
+                <a href="#" data-toggle="dropdown" class="btn dropdown-toggle">
+                    <i class="icon-user"></i> <?php echo $_SESSION['aut']->nome; ?>
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#" class="cookie-delete">Delete Cookies</a></li>
+                    <li class="divider"></li>
+                    <li><a href="<?php echo BASE.'/logoff' ?>">Logout</a></li>
+                </ul>
+            </div>
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            Messages <span class="badge badge-info">100</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Message 1</a></li>
+                            <li><a href="#">Another message</a></li>
+                            <li><a href="#">Something else message</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Older messages...</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            Settings
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Personal Info</a></li>
+                            <li><a href="#">Preferences</a></li>
+                            <li><a href="#">Alerts</a></li>
+                            <li><a href="#" class="cookie-delete">Delete Cookies</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</div><!--//Fim header-->
+
+<!-- Content -->
+<div class="container-fluid content-admin">
+<div class="row-fluid">

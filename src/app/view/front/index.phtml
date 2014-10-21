@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Licitações</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?php echo BASE ?>/bootstrap/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE ?>/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo BASE ?>/bootstrap/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="<?php echo BASE ?>/javascript/select2/select2.css">
+    <link rel="stylesheet" href="<?php echo BASE ?>/javascript/datetimepicker/jquery.datetimepicker.css">
+    <script src="<?php echo BASE ?>/javascript/jquery.js"></script>
+    <script src="<?php echo BASE ?>/javascript/select2/select2.min.js"></script>
+    <script src="<?php echo BASE ?>/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo BASE ?>/javascript/datetimepicker/jquery.datetimepicker.js"></script>
+    <script src="<?php echo BASE ?>/javascript/funcoes.js"></script>
+    <!--[if lt IE 9]>
+    <script src="<?php echo BASE ?>/javascript/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row-fluid header">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="search">
+                    <h1>Licitações <small>Busca por filtro</small></h1>
+                    <form method="post">
+                        <div class="bloc">
+
+                            <p class="span3">
+                                <span>Título</span>
+                                <input type="text" name="titulo" placeholder="Título"/>
+                            </p>
+
+                            <p class="span3">
+                                <span>Status</span>
+                                <select name="status" id="status">
+                                    <option value=""></option>
+                                    <option value="">Todas</option>
+                                    <option value="1">Correndo</option>
+                                    <option value="2">Finalizadas</option>
+                                </select>
+                            </p>
+
+                            <p class="span3">
+                                <span>Ano</span>
+                                <select name="ano" id="ano">
+                                    <option value=""></option>
+                                    <?php
+                                        for($i=2000;$i<=date('Y');$i++):
+                                            echo "<option value=\"$i\">$i</option>";
+                                        endfor;
+                                     ?>
+                                </select>
+                            </p>
+
+                            <p class="span3">
+                                <span>Modalidade</span>
+                                <select name="modalidade" id="modalidade">
+                                    <option value=""></option>
+                                    <?php foreach($data->modalidades as $item): ?>
+                                    <option value="<?php echo $item->id; ?>"><?php echo $item->nome; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </p>
+
+                        </div><!--//bloc-->
+
+                        <div class="bloc">
+                            <p class="span3">
+                                <span>Período de </span>
+                                <input type="text" name="data_ini" class="date" placeholder="Dia/Mês/Ano"/>
+                            </p>
+
+                            <p class="span3">
+                                <span>a</span>
+                                <input type="text" name="data_end" class="date" placeholder="Dia/Mês/Ano"/>
+                            </p>
+
+                            <p class="span3">
+                                <span>Processo</span>
+                                <input type="text" name="processo" placeholder="Somente números"/>
+                            </p>
+
+                            <p class="span3">
+                                <button class="btn btn-primary">Filtrar</button>
+                            </p>
+                        </div><!--//bloc-->
+
+                    </form>
+                </div><!--//search-->
+            </div>
+        </div>
+    </div><!--//header-->
+
+
+    <div class="row-fluid conteudo">
+        <div class="container-fluid">
+            <div class="content-site">
+                    <?php #echo($data->sql); ?>
+                <div class="content-results">
+                    <p><span class="badge badge-important"><?php echo count($data->licits) ?></span> Resultados da busca</p>
+                    <hr/>
+
+                    <?php
+                        if(count($data->licits)>0)
+                        {
+                        foreach($data->licits as $item):
+                        $i++;
+                    ?>
+
+                    <div class="results">
+
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#resumo-<?php echo $i;?>" data-toggle="tab">Resumo</a></li>
+                            <li><a href="#objetivo-<?php echo $i;?>" data-toggle="tab">Objetivo</a></li>
+                            <li><a href="#docs-<?php echo $i;?>" data-toggle="tab">Documentações</a></li>
+                            <li><a href="#comunicacao-<?php echo $i;?>" data-toggle="tab">Comunicados</a></li>
+                            <li><a href="#ata-<?php echo $i;?>" data-toggle="tab">Ata</a></li>
+                            <li><a href="#contrato-<?php echo $i;?>" data-toggle="tab">Contratos/ARP</a></li>
+                            <li><a href="#relatorio-<?php echo $i;?>" data-toggle="tab">Relatórios</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+
+                            <div class="tab-pane active" id="resumo-<?php echo $i;?>">
+                                <h2><?php echo "#$item->id / {$item->titulo}";  ?></h2>
+
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th class="obj">Objetivo</th>
+                                        <th>Modalidade</th>
+                                        <th>Abertura</th>
+                                        <th>Horário</th>
+                                        <th>Tipo</th>
+                                        <th>Jugamento</th>
+                                        <th>Processo</th>
+                                        <th>Situação</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="obj">
+                                            <a href="#" class="objetivo" rel="popover" data-content="<?php echo $item->objetivo; ?>" data-placement="top" data-original-title="Objetivo">
+                                                <?php echo \app\helpers\Data::rText($item->objetivo,50); ?>
+                                            </a>
+                                        </td>
+                                        <td><?php echo \app\helpers\Data::modalidade($item->modalidade) ?></td>
+                                        <td><?php echo \app\helpers\Data::data($item->data_ini,'br') ?></td>
+                                        <td><?php echo date('H:i', strtotime($item->data_end)); ?></td>
+                                        <td><?php echo $item->tipo; ?></td>
+                                        <td><?php echo $item->julgamento; ?></td>
+                                        <td><?php echo $item->processo; ?></td>
+                                        <td><?php echo \app\helpers\Data::status($item->status); ?></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <div class="tab-pane" id="docs-<?php echo $i;?>">
+                                <h2>Documentação</h2>
+                                <?php echo $item->documentacao; ?>
+                            </div>
+
+                            <div class="tab-pane" id="comunicacao-<?php echo $i;?>">
+                                <h2>Comunicação</h2>
+                                <?php echo $item->comnicacao; ?>
+                            </div>
+
+                            <div class="tab-pane" id="ata-<?php echo $i;?>">
+                                <h2>Ata</h2>
+                                <?php echo $item->ata; ?>
+                            </div>
+                            <div class="tab-pane" id="contrato-<?php echo $i;?>">
+                                <h2>Contrato</h2>
+                                <?php echo $item->contrato; ?>
+                            </div>
+
+                            <div class="tab-pane" id="relatorio-<?php echo $i;?>">
+                                <h2>Relatório</h2>
+                                <?php echo $item->relatorio; ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                        endforeach;
+                        }else{
+                            echo('<h3>Nenhum resultado encontrado</h3>');
+                        }
+                    ?>
+
+                </div>
+            </div>
+        </div>
+    </div><!--//content-site-->
+
+</div><!--//container-fluid-->
+
+</body>
+</html>

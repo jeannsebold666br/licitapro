@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?php echo BASE ?>/bootstrap/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE ?>/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo BASE ?>/bootstrap/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="<?php echo BASE ?>/javascript/select2/select2.css">
+    <link rel="stylesheet" href="<?php echo BASE ?>/javascript/datetimepicker/jquery.datetimepicker.css">
+    <!--[if lt IE 9]>
+    <script src="<?php echo BASE ?>/javascript/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body class="badmin">
+<!-- Content -->
+<div class="container-fluid">
+<div class="row-fluid">
+
+<!--//CONTENT -->
+<div class="span12">
+
+    <div class="page-header page-header-login">
+        <div class="page-content">
+            <h2>Administração</h2>
+            Painel de acesso ao sistema de gerenciamento de licitações. Informe seu email e sua senha.
+            Caso você tenha problemas no login, utilize as opções de redefinição de senha.
+        </div>
+    </div>
+
+    <div class="login">
+        <?php \app\helpers\Message::get(); ?>
+        <form method="post" class="form-signin login">
+            <label for="email" class="input">
+                <input type="text" placeholder="Email" name="email" value="<?php echo $data['email']; ?>" class="input-block-level" title="Email">
+            </label>
+            <label for="senha" class="input">
+                <input type="password" placeholder="Senha" name="senha" value="<?php echo $data['senha']; ?>" class="input-block-level" title="Senha">
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" value="1" name="lembrar" <?php if($data['check']==true) echo 'checked'; ?>> Lembrar-me <br/>
+            </label>
+            <a href="#" class="remem">Esqueci minha senha</a>
+            <button name="login" type="submit" class="btn btn-success">Acessar</button>
+        </form>
+    </div>
+
+</div>
+<!--//CONTENT-->
+
+<!--//FOOTER-->
+<?php $this->render('back/footer'); ?>

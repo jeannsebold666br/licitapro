@@ -1,0 +1,99 @@
+<!--//HEADER-->
+<?php $this->render('back/header'); ?>
+
+<!--//MENU SDEBAR-->
+<div class="span2 menu-sidebar">
+    <?php $this->render('back/sidebar'); ?>
+</div>
+
+<!--//CONTENT -->
+<div class="span10">
+    <ul class="breadcrumb">
+        <li><a href="#">Painel</a> <span class="divider">/</span></li>
+        <li><a href="#">Licitações</a> <span class="divider">/</span></li>
+        <li class="active">Listagem</li>
+    </ul>
+
+    <div class="msgs">
+        <?php \app\helpers\Message::get(); ?>
+    </div>
+
+        <div class="content">
+
+            <div class="navbar-inner header-admin">
+
+                <div class="nav-header">
+                    <div class="local">
+                        <h3>Licitações</h3>
+                    </div>
+
+                    <div class="form">
+                        <form action="" method="post" class="form-search span4">
+                            <div class="input-append">
+                                <input type="text" name="s" value="<?php echo $_POST['s']; ?>" class="search-query">
+                                <button type="submit" class="btn"><i class="icon-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="acoes">
+                        <div class="btn-group">
+                            <a href="<?php echo BASE; ?>/panel/licitacoes/novo" class="btn btn-success btn-mini"><i class="icon-plus icon-white"></i> Novo</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!--//header-admin-->
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th class="first">#</th>
+                    <th>Título</th>
+                    <th>Modalidade</th>
+                    <th>Processo</th>
+                    <th>Início</th>
+                    <th>Término</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach($data as $item): ?>
+                    <tr>
+                        <td class="first"><span><?php echo $item->id; ?></td>
+                        <td class="ctn"><?php echo $item->titulo; ?></td>
+                        <td><?php echo \app\helpers\Data::modalidade($item->id); ?></td>
+                        <td><?php echo $item->processo; ?></td>
+                        <td><?php echo \app\helpers\Data::data($item->data_ini,'br', true); ?></td>
+                        <td><?php echo \app\helpers\Data::data($item->data_end,'br', true); ?></td>
+                        <td><?php echo \app\helpers\Data::status($item->status) ?></td>
+                        <td class="btns-actions">
+                            <a href="<?php echo BASE.'/panel/licitacoes/novo/'.$item->id; ?>" class="btn btn-primary btn-mini"><i class="icon-edit icon-white"></i></a>
+                            <a href="#del<?php echo $item->id; ?>" class="btn btn-danger btn-mini" data-toggle="modal"><i class="icon-trash icon-white"></i></a>
+
+                            <div id="del<?php echo $item->id; ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-header">
+                                    <h3 id="myModalLabel">Exclusão de Registro</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <p>
+                                        Deseja eliminar o registro <span class="badge badge-warning"><?php echo $item->titulo; ?></span> do sistema?
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                                    <a href="<?php echo BASE.'/panel/licitacoes/del/'.$item->id; ?>" class="btn btn-danger">Continuar</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div><!--//content-->
+</div>
+<!--//CONTENT-->
+
+<!--//FOOTER-->
+<?php $this->render('back/footer'); ?>

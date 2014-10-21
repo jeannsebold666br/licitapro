@@ -1,0 +1,163 @@
+<!--//HEADER-->
+<?php $this->render('back/header'); ?>
+
+<!--//MENU SDEBAR-->
+<div class="span2 menu-sidebar">
+    <?php $this->render('back/sidebar'); ?>
+</div>
+
+<!--//CONTENT -->
+<div class="span10">
+    <ul class="breadcrumb">
+        <li><a href="#">Painel</a> <span class="divider">/</span></li>
+        <li><a href="#">Licitações</a> <span class="divider">/</span></li>
+        <li class="active">Nova</li>
+    </ul>
+
+    <div class="msgs">
+        <?php \app\helpers\Message::get(); ?>
+    </div>
+
+        <div class="content">
+
+            <div class="navbar-inner header-admin">
+                <div class="nav-header">
+                    <div class="local">
+                        <h3>Nova licitação</h3>
+                    </div>
+
+                    <div class="acoes">
+                        <div class="btn-group">
+                            <a href="<?php echo BASE.'/panel/licitacoes'; ?>" class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i> Cancelar</a>
+                        </div>
+                    </div>
+                </div>
+            </div><!--///header-admin-->
+
+            <div class="form-cad">
+                <form class="form-horizontal" method="post">
+
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#pri" data-toggle="tab">Principal</a></li>
+                        <li><a href="#obj" data-toggle="tab">Objetivo</a></li>
+                        <li><a href="#doc" data-toggle="tab">Documentações</a></li>
+                        <li><a href="#com" data-toggle="tab">Comunicados</a></li>
+                        <li><a href="#ata" data-toggle="tab">Ata</a></li>
+                        <li><a href="#con" data-toggle="tab">Contratos/ARP</a></li>
+                        <li><a href="#rel" data-toggle="tab">Relatórios</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="pri">
+                            <div class="control-group">
+                                <label class="control-label">Título</label>
+                                <div class="controls">
+                                    <input type="text" value="<?php echo $data->titulo; ?>" class="span5" name="titulo" placeholder="Título">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Processo</label>
+                                <div class="controls">
+                                    <input type="text" value="<?php echo $data->processo; ?>" class="span5" name="processo" placeholder="Processo">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Modalidade</label>
+                                <div class="controls">
+                                    <select name="modalidade" class="span4">
+                                        <?php if(!$data->nivel) echo '<option value=""></option>'; ?>
+                                        <?php foreach($data->modalidades as $m): ?>
+                                        <option value="<?php echo $m->id; ?>";?>><?php echo $m->nome; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Status</label>
+                                <div class="controls">
+                                    <select name="status" class="span4">
+                                        <?php if(!$data->nivel) echo '<option value=""></option>'; ?>
+                                        <option value="1" <?php if($data->nivel==1) echo 'selected'; ?>>Correnndo</option>
+                                        <option value="2" <?php if($data->nivel==2) echo 'selected'; ?>>Finalizada</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Tipo</label>
+                                <div class="controls">
+                                    <input type="text" value="<?php echo $data->tipo; ?>" class="span5" name="tipo" placeholder="Tipo">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Julgamento</label>
+                                <div class="controls">
+                                    <input type="text" value="<?php echo $data->julgamento; ?>" class="span5" name="julgamento" placeholder="Julgamento">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Abertura</label>
+                                <div class="controls">
+                                    <input type="text" value="<?php if($data->data_ini) echo \app\helpers\Data::data($data->data_ini,'br',true); ?>" class="datetime span5" name="data_ini" placeholder="Data de abertura">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Encerramento</label>
+                                <div class="controls">
+                                    <input type="text" value="<?php if($data->data_end) echo \app\helpers\Data::data($data->data_end,'br',true); ?>" class="datetime span5" name="data_end" placeholder="Data de encerramento">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="tab-pane" id="obj">
+                            <div class="">
+                                <textarea name="objetivo" id="" cols="30" rows="10"><?php echo $data->objetivo; ?></textarea>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="doc">
+                            <div class="">
+                                <textarea name="documentacao" id="" cols="30" rows="10"><?php echo $data->documentacao; ?></textarea>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="com">
+                            <div class="">
+                                <textarea name="comunicado" id="" cols="30" rows="10"><?php echo $data->comunicado; ?></textarea>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="ata">
+                            <div class="">
+                                <textarea name="ata" id="" cols="30" rows="10"><?php echo $data->ata; ?></textarea>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="con">
+                            <div class="">
+                                <textarea name="contrato" id="" cols="30" rows="10"><?php echo $data->contrato; ?></textarea>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="rel">
+                            <div class="">
+                                <textarea name="relatorio" id="" cols="30" rows="10"><?php echo $data->relatorio; ?></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr/>
+                    <div class="control-group">
+                        <label class="control-label">Finalizar</label>
+                        <div class="controls">
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                    </div>
+                </form>
+            </div><!--//form-cad-->
+
+        </div><!--//content-->
+</div>
+<!--//CONTENT-->
+
+<!--//FOOTER-->
+<?php $this->render('back/footer'); ?>

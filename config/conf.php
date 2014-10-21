@@ -2,7 +2,7 @@
 date_default_timezone_set('America/Sao_Paulo');
 define('PATH_ROOT', dirname(__DIR__));
 define('PATH_SITE', $_SERVER['DOCUMENT_ROOT']);
-define('BASE', 'http://licita.dev');
+define('BASE', 'http://licitapro.dev');
 define('DS', DIRECTORY_SEPARATOR);
 define('PS', PATH_SEPARATOR);
 define('PATH_MODEL', PATH_ROOT.DS.'src'.DS.'app'.DS.'model');

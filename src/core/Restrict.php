@@ -2,7 +2,6 @@
 
 namespace core;
 
-use app\model\Users;
 
 class Restrict
 {
@@ -15,15 +14,14 @@ class Restrict
         if(!self::$verify)
         {
             session_start();
-            $user = new Users();
-            if($user->ver("email='{$_SESSION['aut']->email}' AND pass='{$_SESSION['aut']->pass}'"))
+            if(!empty($_SESSION['aut']))
             {
                 self::$verify = true;
             }
             else
             {
                 session_destroy();
-                header("location: ".BASE.'/logar');
+                header("location: ".BASE.'/admin');
             }
         }
     }

@@ -56,6 +56,7 @@ class MOXMAN_ExternalAuthenticator_Plugin implements MOXMAN_Auth_IAuthenticator 
 
 		$json = json_decode($response->getBody());
 
+
 		if (!$json) {
 			throw new MOXMAN_Exception("Did not get a proper JSON response from Auth url.");
 		}

@@ -71,12 +71,12 @@
                         <div class="bloc">
                             <p class="span3">
                                 <span>Período de </span>
-                                <input type="text" name="data_ini" class="date" placeholder="Dia/Mês/Ano"/>
+                                <input type="text" name="data_ini" class="date" placeholder="__/__/____"/>
                             </p>
 
                             <p class="span3">
                                 <span>a</span>
-                                <input type="text" name="data_end" class="date" placeholder="Dia/Mês/Ano"/>
+                                <input type="text" name="data_end" class="date" placeholder="__/__/____"/>
                             </p>
 
                             <p class="span3">
@@ -101,7 +101,7 @@
             <div class="content-site">
                     <?php #echo($data->sql); ?>
                 <div class="content-results">
-                    <p><span class="badge badge-important"><?php echo count($data->licits) ?></span> Resultados da busca</p>
+                    <p><span class="badge badge-important"><?php echo count($data->licits) ?></span> Resultado(s) da busca.</p>
                     <hr/>
 
                     <?php
@@ -115,7 +115,6 @@
 
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#resumo-<?php echo $i;?>" data-toggle="tab">Resumo</a></li>
-                            <li><a href="#objetivo-<?php echo $i;?>" data-toggle="tab">Objetivo</a></li>
                             <li><a href="#docs-<?php echo $i;?>" data-toggle="tab">Documentações</a></li>
                             <li><a href="#comunicacao-<?php echo $i;?>" data-toggle="tab">Comunicados</a></li>
                             <li><a href="#ata-<?php echo $i;?>" data-toggle="tab">Ata</a></li>
@@ -144,7 +143,7 @@
                                     <tbody>
                                     <tr>
                                         <td class="obj">
-                                            <a href="#" class="objetivo" rel="popover" data-content="<?php echo $item->objetivo; ?>" data-placement="top" data-original-title="Objetivo">
+                                            <a href="#" class="objetivo" rel="popover" data-content='<?php echo stripcslashes($item->objetivo); ?>' data-placement="right" data-original-title="Objetivo">
                                                 <?php echo \app\helpers\Data::rText($item->objetivo,50); ?>
                                             </a>
                                         </td>
@@ -162,27 +161,34 @@
                             </div>
 
                             <div class="tab-pane" id="docs-<?php echo $i;?>">
-                                <h2>Documentação</h2>
-                                <?php echo $item->documentacao; ?>
+                                <div class="text">
+                                    <h2>Documentação</h2>
+                                    <?php echo $item->documentacao; ?>
+                                </div>
                             </div>
-
                             <div class="tab-pane" id="comunicacao-<?php echo $i;?>">
-                                <h2>Comunicação</h2>
-                                <?php echo $item->comnicacao; ?>
+                                <div class="text">
+                                    <h2>Comunicação</h2>
+                                    <?php echo $item->comnicacao; ?>
+                                </div>
                             </div>
-
                             <div class="tab-pane" id="ata-<?php echo $i;?>">
-                                <h2>Ata</h2>
-                                <?php echo $item->ata; ?>
+                                <div class="text">
+                                    <h2>Ata</h2>
+                                    <?php echo $item->ata; ?>
+                                </div>
                             </div>
                             <div class="tab-pane" id="contrato-<?php echo $i;?>">
-                                <h2>Contrato</h2>
-                                <?php echo $item->contrato; ?>
+                                <div class="text">
+                                    <h2>Contrato</h2>
+                                    <?php echo $item->contrato; ?>
+                                </div>
                             </div>
-
                             <div class="tab-pane" id="relatorio-<?php echo $i;?>">
-                                <h2>Relatório</h2>
-                                <?php echo $item->relatorio; ?>
+                                <div class="text">
+                                    <h2>Relatório</h2>
+                                    <?php echo $item->relatorio; ?>
+                                </div>
                             </div>
                         </div>
                     </div>

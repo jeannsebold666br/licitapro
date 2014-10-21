@@ -99,6 +99,12 @@ select#status{
 .tab-pane table td i{
     font-style: normal;
 }
+td.obj .popover{
+    width: 350px;
+}
+body.mce-content-body {
+    font-size: 14px !important;
+}
 
 /*back end*/
 .page-header-login{
@@ -179,9 +185,14 @@ table tr td.btns-actions{
 .form-cad form span.help-inline{
     color: #BD362F;
 }
-.tab-pane > div{
-    max-width: 100%;
+.tab-pane > div.text{
     margin: 5px 10px;
+    font-size: 13px;
+    color: #333;
+}
+
+.tab-pane > div textarea:hover{
+    cursor: text;
 }
 .mce-panel{
     border-color: #ddd !important;

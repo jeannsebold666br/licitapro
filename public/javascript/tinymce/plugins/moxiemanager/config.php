@@ -1,17 +1,17 @@
 <?php
 // General
-$moxieManagerConfig['general.license'] = 'YOUR_LICENSE_KEY';
+$moxieManagerConfig['general.license'] = 'YOUR-LICENSE-KEY';
 $moxieManagerConfig['general.hidden_tools'] = '';
 $moxieManagerConfig['general.disabled_tools'] = '';
 $moxieManagerConfig['general.plugins'] = 'Favorites,History,Uploaded';
 $moxieManagerConfig['general.demo'] = false;
 $moxieManagerConfig['general.debug'] = false;
-$moxieManagerConfig['general.language'] = 'pt_BR';
+$moxieManagerConfig['general.language'] = 'pt_br';
 $moxieManagerConfig['general.temp_dir'] = '';
 $moxieManagerConfig['general.allow_override'] = 'hidden_tools,disabled_tools';
 
 // Filesystem
-$moxieManagerConfig['filesystem.rootpath'] = '../../../../webroot/uploads';
+$moxieManagerConfig['filesystem.rootpath'] = $_SERVER["DOCUMENT_ROOT"]."/media";  ///webroot/uploads';
 $moxieManagerConfig['filesystem.include_directory_pattern'] = '';
 $moxieManagerConfig['filesystem.exclude_directory_pattern'] = '/^mcith$/i';
 $moxieManagerConfig['filesystem.include_file_pattern'] = '';
@@ -39,10 +39,10 @@ $moxieManagerConfig['createdoc.allow_override'] = '*';
 $moxieManagerConfig['upload.include_file_pattern'] = '';
 $moxieManagerConfig['upload.exclude_file_pattern'] = '';
 $moxieManagerConfig['upload.extensions'] = '*';
-$moxieManagerConfig['upload.maxsize'] = '100MB';
+$moxieManagerConfig['upload.maxsize'] = '20MB';
 $moxieManagerConfig['upload.overwrite'] = false;
 $moxieManagerConfig['upload.autoresize'] = false;
-$moxieManagerConfig['upload.autoresize_jpeg_quality'] = 90;
+$moxieManagerConfig['upload.autoresize_jpeg_quality'] = 95;
 $moxieManagerConfig['upload.max_width'] = 800;
 $moxieManagerConfig['upload.max_height'] = 600;
 $moxieManagerConfig['upload.chunk_size'] = '5mb';
@@ -60,7 +60,7 @@ $moxieManagerConfig['rename.allow_override'] = '*';
 $moxieManagerConfig['edit.include_file_pattern'] = '';
 $moxieManagerConfig['edit.exclude_file_pattern'] = '';
 $moxieManagerConfig['edit.extensions'] = 'jpg,jpeg,png,gif,html,htm,txt';
-$moxieManagerConfig['edit.jpeg_quality'] = 90;
+$moxieManagerConfig['edit.jpeg_quality'] = 95;
 $moxieManagerConfig['edit.allow_override'] = '*';
 
 // View
@@ -88,7 +88,16 @@ $moxieManagerConfig['thumbnail.jpeg_quality'] = 75;
 $moxieManagerConfig['thumbnail.allow_override'] = '*';
 
 // Authentication
-$moxieManagerConfig['authenticator'] = 'ExternalAuthenticator';
+/*
+$moxieManagerConfig['authenticator'] = 'BasicAuthenticator';
+$moxieManagerConfig['basicauthenticator.users'] = array(
+   array(
+      "username" => "webcomcafe",
+      "password" => "123456",
+      "email" => "webcomcafe@aoutlook.com",
+      "groups" => array("administrator"))
+);
+*/
 
 // SessionAuthenticator
 $moxieManagerConfig['SessionAuthenticator.logged_in_key'] = 'isLoggedIn';
@@ -99,8 +108,8 @@ $moxieManagerConfig['SessionAuthenticator.config_prefix'] = 'moxiemanager';
 $moxieManagerConfig['IpAuthenticator.ip_numbers'] = '127.0.0.1';
 
 // ExternalAuthenticator
-$moxieManagerConfig['ExternalAuthenticator.external_auth_url'] = '/moxie_manager/moxie_manager/auth';
-$moxieManagerConfig['ExternalAuthenticator.secret_key'] = 'YOUR_SECRET_KEY';
+$moxieManagerConfig['ExternalAuthenticator.external_auth_url'] = '/auth.php';
+$moxieManagerConfig['ExternalAuthenticator.secret_key'] = 'A000BC77RU';
 
 // Local filesystem
 $moxieManagerConfig['filesystem.local.wwwroot'] = '';
@@ -132,11 +141,6 @@ $moxieManagerConfig['autoformat.delete_format_images'] = true;
 $moxieManagerConfig['autorename.enabled'] = false;
 $moxieManagerConfig['autorename.spacechar'] = "_";
 $moxieManagerConfig['autorename.lowercase'] = false;
-
-// BasicAuthenticator plugin
-$moxieManagerConfig['basicauthenticator.users'] = array(
-array("username" => "moxie", "password" => "manager", "groups" => array("administrator"))
-);
 
 // GoogleDrive
 $moxieManagerConfig['googledrive.client_id'] = '';

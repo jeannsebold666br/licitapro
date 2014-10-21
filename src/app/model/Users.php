@@ -160,7 +160,7 @@ class Users extends ActiveRecord
     {
         session_start();
         session_destroy();
-        header("location: ".BASE.'/logar');
+        header("location: ".BASE.'/admin');
     }
 
 } 

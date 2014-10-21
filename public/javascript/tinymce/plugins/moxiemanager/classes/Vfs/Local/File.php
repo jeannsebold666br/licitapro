@@ -431,7 +431,9 @@ class MOXMAN_Vfs_Local_File extends MOXMAN_Vfs_BaseFile {
 
 	private function fromUtf($path) {
 		if (DIRECTORY_SEPARATOR == "\\") {
-			$path = mb_convert_encoding($path, "Windows-1252", "UTF-8");
+//			$path = mb_convert_encoding($path, "Windows-1252", "UTF-8");
+            $path = iconv("Windows-1252", "UTF-8",$path);
+
 
 			// Detect any characters outside the Win32 filename byte range
 			if (strpos($path, '?') !== false) {
@@ -444,7 +446,7 @@ class MOXMAN_Vfs_Local_File extends MOXMAN_Vfs_BaseFile {
 
 	private function toUtf($path) {
 		if (DIRECTORY_SEPARATOR == "\\") {
-			return mb_convert_encoding($path, "UTF-8", "Windows-1252");
+			return iconv("UTF-8", "Windows-1252", $path);
 		}
 
 		return $path;

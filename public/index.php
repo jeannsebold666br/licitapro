@@ -5,6 +5,5 @@ require_once('../vendor/AutoLoader.php');
 
 $loader = new AutoLoader();
 $loader->register();
-
 $app = new Application();
 $app->run();

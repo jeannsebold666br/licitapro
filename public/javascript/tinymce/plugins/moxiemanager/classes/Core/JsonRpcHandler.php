@@ -34,14 +34,14 @@ class MOXMAN_Core_JsonRpcHandler implements MOXMAN_Http_IHandler {
 			if ($json && $json->method != "install") {
 				$config = MOXMAN::getConfig()->getAll();
 
-				if (empty($config) || !isset($config["general.license"])) {
+				if (empty($config)) {
 					$exception = new MOXMAN_Exception("Installation needed.", MOXMAN_Exception::NEEDS_INSTALLATION);
 					throw $exception;
 				}
 
-				if (!preg_match('/^([0-9A-Z]{4}\-){7}[0-9A-Z]{4}$/', trim($config["general.license"]))) {
-					throw new MOXMAN_Exception("Invalid license: " . $config["general.license"]);
-				}
+//				if (!preg_match('/^([0-9A-Z]{4}\-){7}[0-9A-Z]{4}$/', trim($config["general.license"]))) {
+//					throw new MOXMAN_Exception("Invalid license: " . $config["general.license"]);
+//				}
 			}
 
 			// Check if the user is authenticated or not

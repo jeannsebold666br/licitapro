@@ -36,6 +36,7 @@ class Licitacoes extends ActiveRecord
                 {
                     $_POST['data_ini'] = $data_ini;
                     $_POST['data_end'] = $data_end;
+                    $_POST['objetivo'] = addslashes($_POST['objetivo']);
                     $this->data = $_POST;
                     if(parent::insert())
                     {
@@ -58,10 +59,6 @@ class Licitacoes extends ActiveRecord
 
         if($_POST)
         {
-            while($i=array_search('', $_POST))
-            {
-                unset($_POST[$i]);
-            }
 
             if((parent::ver("processo='{$_POST['processo']}'")) && ($_POST['processo']!=$field))
             {
@@ -71,6 +68,7 @@ class Licitacoes extends ActiveRecord
             {
                 $_POST['data_ini'] = $data_ini;
                 $_POST['data_end'] = $data_end;
+                #$_POST['objetivo'] = addslashes($_POST['objetivo']);
                 $this->data = $_POST;
                 if(parent::update($cond))
                 {

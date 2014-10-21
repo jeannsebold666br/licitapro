@@ -18,22 +18,26 @@ $(document).ready(function(){
         lang: 'pt'
     });
 
-    $('.objetivo').popover().click(function(){
+    $('.objetivo').popover({
+        html: true
+    }).click(function(){
         return false;
     });
 
-    /*tinymce.init({
+    tinymce.init({
         language: 'pt_BR',
         selector: "textarea",
+        relative_urls: false,
+        remove_script_host: false,
         height: 300,
         plugins: [
             "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-            "table contextmenu directionality emoticons template textcolor paste fullpage textcolor colorpicker textpattern moxiemanager"
+            "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern moxiemanager"
         ],
 
-        toolbar1: "bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect | bullist numlist outdent indent | link unlink | media image insertfile | code",
-        toolbar2: "undo redo | outdent indent blockquote | insertdatetime preview | forecolor backcolor | table | hr removeformat | subscript superscript | charmap emoticons | ltr rtl | spellchecker | visualchars visualblocks pagebreak",
+        toolbar1: "bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect | bullist numlist | media image insertfile",
+        toolbar2: "undo redo | outdent indent blockquote | insertdatetime preview | forecolor backcolor | table | hr removeformat | subscript superscript | charmap emoticons | ltr rtl | spellchecker | visualblocks pagebreak | link unlink code",
         toolbar3: "",
 
         menubar: false,
@@ -53,5 +57,5 @@ $(document).ready(function(){
             {title: 'Test template 1', content: 'Test 1'},
             {title: 'Test template 2', content: 'Test 2'}
         ]
-    });*/
+    });
 });

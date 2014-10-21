@@ -4,3 +4,4 @@ RewriteCond %{REQUEST_FILENAME} -l [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^.*$ - [NC,L]
 RewriteRule ^(.*)$ public/index.php [QSA,L]
+php_flag magic_quotes_gpc Off

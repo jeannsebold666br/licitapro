@@ -1,4 +1,5 @@
 <?php
+
 use core\Router;
 
 class Application extends Router
@@ -15,7 +16,7 @@ class Application extends Router
             ),
             // ROTAS BACK END
             array(
-                'route'      => '/logar',
+                'route'      => '/admin',
                 'controller' => 'back/user',
                 'action'     => 'login'
             ),

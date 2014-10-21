@@ -71,8 +71,11 @@ class Data
     public static function rText($string, $limit=13)
     {
         $text = strip_tags($string);
-        $space  = strrpos(substr($text, 0, $limit), ' ');
-        $text = substr($text,0, $space);
+        if(strlen($string)>$limit)
+        {
+            $space  = strrpos(substr($text, 0, $limit), ' ');
+            $text = substr($text,0, $space);
+        }
         return $text;
     }
 } 

@@ -1,7 +1,7 @@
 <?php
 Header("Content-type: application/json; charset=utf-8");
 
-$secretKey = "";
+$secretKey = "A000BC77RU";
 
 if (!$secretKey) {
 	die('{"error" : {"message" : "No secret key set.", "code" : 130}}');

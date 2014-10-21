@@ -67,9 +67,11 @@
                                 <label class="control-label">Modalidade</label>
                                 <div class="controls">
                                     <select name="modalidade" class="span4">
-                                        <?php if(!$data->nivel) echo '<option value=""></option>'; ?>
+                                        <?php if(!$data->modalidade) echo '<option value=""></option>'; ?>
                                         <?php foreach($data->modalidades as $m): ?>
-                                        <option value="<?php echo $m->id; ?>";?>><?php echo $m->nome; ?></option>
+                                        <option value="<?php echo $m->id; ?>" <?php if($data->modalidade==$m->id) echo('selected'); ?>>
+                                            <?php echo $m->nome; ?>
+                                        </option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -78,9 +80,9 @@
                                 <label class="control-label">Status</label>
                                 <div class="controls">
                                     <select name="status" class="span4">
-                                        <?php if(!$data->nivel) echo '<option value=""></option>'; ?>
-                                        <option value="1" <?php if($data->nivel==1) echo 'selected'; ?>>Correnndo</option>
-                                        <option value="2" <?php if($data->nivel==2) echo 'selected'; ?>>Finalizada</option>
+                                        <?php if(!$data->status) echo '<option value=""></option>'; ?>
+                                        <option value="1" <?php if($data->status==1) echo 'selected'; ?>>Correnndo</option>
+                                        <option value="2" <?php if($data->status==2) echo 'selected'; ?>>Finalizada</option>
                                     </select>
                                 </div>
                             </div>

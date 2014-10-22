@@ -2,8 +2,8 @@
 
 namespace app\model;
 
-use app\helpers\Data;
-use app\helpers\Message,
+use app\helpers\Data,
+    app\helpers\Message,
     library\ActiveRecord;
 
 class Licitacoes extends ActiveRecord
@@ -34,17 +34,24 @@ class Licitacoes extends ActiveRecord
                 }
                 else
                 {
-                    $_POST['data_ini'] = $data_ini;
-                    $_POST['data_end'] = $data_end;
-                    $_POST['objetivo'] = addslashes($_POST['objetivo']);
-                    $this->data = $_POST;
-                    if(parent::insert())
+                    if(Data::dataval($data_ini,$data_end))
                     {
-                        header("location: ".BASE.'/panel/licitacoes');
+                        Message::set('A data de encerramento é inválida', 'error');
                     }
                     else
                     {
-                        Message::set('Não foi possível realizar a operação', 'error');
+                        $_POST['data_ini'] = $data_ini;
+                        $_POST['data_end'] = $data_end;
+                        $_POST['objetivo'] = addslashes($_POST['objetivo']);
+                        $this->data = $_POST;
+                        if(parent::insert())
+                        {
+                            header("location: ".BASE.'/panel/licitacoes');
+                        }
+                        else
+                        {
+                            Message::set('Não foi possível realizar a operação', 'error');
+                        }
                     }
                 }
             }
@@ -52,7 +59,7 @@ class Licitacoes extends ActiveRecord
     }
 
 
-    public function update($cond, $field)
+    public function update($cond, $field=null)
     {
         $data_ini = $_POST['data_ini'] ? Data::data($_POST['data_ini'],'en') : date('Y-m-d H:i:s');
         $data_end = $_POST['data_end'] ? Data::data($_POST['data_end'],'en') : date('Y-m-d H:i:s');

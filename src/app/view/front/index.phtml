@@ -109,6 +109,7 @@
                         {
                         foreach($data->licits as $item):
                         $i++;
+
                     ?>
 
                     <div class="results">
@@ -153,7 +154,7 @@
                                         <td><?php echo $item->tipo; ?></td>
                                         <td><?php echo $item->julgamento; ?></td>
                                         <td><?php echo $item->processo; ?></td>
-                                        <td><?php echo \app\helpers\Data::status($item->status); ?></td>
+                                        <td><?php echo \app\helpers\Data::status($item->id, $item->data_end); ?></td>
                                     </tr>
                                     </tbody>
                                 </table>

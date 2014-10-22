@@ -2,7 +2,6 @@
 
 namespace app\helpers;
 
-
 class Data
 {
     /** Formatar data
@@ -33,6 +32,21 @@ class Data
         return $res;
     }
 
+    public static function dataval($data_inicial, $data_final)
+    {
+        $ini = new \DateTime(date($data_inicial));
+        $end = new \DateTime(date($data_final));
+        if($end<$ini)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
 
     /**Captura o nome de uma modalidade especificada
      * @param $id
@@ -50,23 +64,23 @@ class Data
      * @param $int
      * @return string
      */
-    public static function status($int)
+    public static function status($id, $data=null)
     {
-        if($int==1)
+        $d1 = new \DateTime();
+        $d2 = new \DateTime($data);
+        if($d1>$d2)
         {
-            $status = '<i class="badge badge-success">Correndo</i>';
-        }
-        elseif($int==2)
-        {
+            $licit = new \app\model\Licitacoes();
+            $licit->data = array('status'=>2);
+            $licit->update("id='{$id}'");
             $status = '<i class="badge badge-important">Finalizada</i>';
         }
         else
         {
-            $status = '<i class="badge">Desconhecido</i>';
+            $status = '<i class="badge badge-success">Correndo</i>';
         }
         return $status;
     }
-
 
     public static function rText($string, $limit=13)
     {
@@ -77,5 +91,24 @@ class Data
             $text = substr($text,0, $space);
         }
         return $text;
+    }
+
+    public static function verificaLicit($id, $data)
+    {
+        $data_now = date(strtotime(date('Y-m-d H:i:s')));
+        $data_end = date(strtotime($data));
+        if($data_now>$data_end)
+        {
+            $licit = new \app\model\Licitacoes();
+            $licit->data = array('status'=>2);
+            $licit->update("id='{$id}'");
+            $text = 'Venceu';
+        }
+        else
+        {
+            $text = 'Coreendo';
+        }
+        echo($text);
+
     }
 } 

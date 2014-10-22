@@ -10,7 +10,7 @@ namespace library;
 
 abstract class ActiveRecord
 {
-    protected  $data;
+    public $data;
 
     public function __set($prop, $value)
     {

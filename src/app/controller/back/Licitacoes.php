@@ -3,8 +3,8 @@
 namespace app\controller\back;
 
 
-use app\helpers\Data;
-use core\Controller;
+use app\helpers\Data,
+    core\Controller;
 
 class Licitacoes extends Controller
 {
@@ -36,8 +36,10 @@ class Licitacoes extends Controller
         else
         {
             $data = $this->model->ver("id = '{$param[1]}'");
+            Data::status($param[1], $data->data_end);
             $this->model->update("id = '{$param[1]}'", $data->processo);
         }
+
         $data->modalidades = $modalidades->select();
         $this->render('back/licitacoes/novo', $data);
     }

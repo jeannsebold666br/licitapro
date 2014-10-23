@@ -3,8 +3,8 @@
 namespace app\controller;
 
 
-use app\helpers\Data;
-use core\Controller;
+use app\helpers\Data,
+    core\Controller;
 
 class Index extends Controller
 {
@@ -32,7 +32,7 @@ class Index extends Controller
             }
             if($data_ini && $data_end)
             {
-                #$horas = ' '.date('H:i:s');
+                $horas = ' '.date('H:i:s');
                 $data_ini .= $horas;
                 $data_end .= $horas;
                 $d_ini = Data::data($data_ini,'en');
@@ -44,7 +44,7 @@ class Index extends Controller
                 $sql .= " AND processo LIKE '%$processo%'";
             }
             $data->licits = $data->select($sql);
-            #$data->sql = $sql;
+            #echo $data->sql = $sql;
         }
         $data->modalidades = $moda->select();
         $this->render('front/index', $data);

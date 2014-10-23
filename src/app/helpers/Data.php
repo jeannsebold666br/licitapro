@@ -77,6 +77,9 @@ class Data
         }
         else
         {
+            $licit = new \app\model\Licitacoes();
+            $licit->data = array('status'=>1);
+            $licit->update("id='{$id}'");
             $status = '<i class="badge badge-success">Correndo</i>';
         }
         return $status;
@@ -91,24 +94,5 @@ class Data
             $text = substr($text,0, $space);
         }
         return $text;
-    }
-
-    public static function verificaLicit($id, $data)
-    {
-        $data_now = date(strtotime(date('Y-m-d H:i:s')));
-        $data_end = date(strtotime($data));
-        if($data_now>$data_end)
-        {
-            $licit = new \app\model\Licitacoes();
-            $licit->data = array('status'=>2);
-            $licit->update("id='{$id}'");
-            $text = 'Venceu';
-        }
-        else
-        {
-            $text = 'Coreendo';
-        }
-        echo($text);
-
     }
 } 

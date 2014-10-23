@@ -75,7 +75,6 @@ class Licitacoes extends ActiveRecord
             {
                 $_POST['data_ini'] = $data_ini;
                 $_POST['data_end'] = $data_end;
-                #$_POST['objetivo'] = addslashes($_POST['objetivo']);
                 $this->data = $_POST;
                 if(parent::update($cond))
                 {
